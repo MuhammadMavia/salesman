@@ -1,0 +1,71 @@
+<md-toolbar>
+    <div class="md-toolbar-tools">
+        <h2>
+            <span>Salesman</span>
+        </h2>
+        <span flex></span>
+        <md-button ng-click="doLogOut()" class=" login-btn">
+            logout
+        </md-button>
+    </div>
+</md-toolbar>
+
+
+<ui-view name="dashboardContent"></ui-view>
+
+<div layout="row">
+    <md-sidenav md-component-id="left" class="md-sidenav-left">
+        <md-toolbar class="md-toolbar-tools">
+            <h2>
+                <span>Salesman</span>
+            </h2>
+            <span flex></span>
+            <md-button ng-click="doLogOut()" class=" login-btn">
+                logout
+            </md-button>
+        </md-toolbar>
+        <md-content class="p-nav-list">
+
+            <div ng-hide="users.length" layout="column" layout-padding layout-align="center center">
+                <h2 flex="50" ng-show="users.length == 0">
+                    Salesman Not Available
+                </h2>
+
+                <div flex="50" ng-hide="users" class="" layout="column" layout-align="center center">
+                    <md-progress-circular md-diameter="100"></md-progress-circular>
+                </div>
+            </div>
+
+            <md-list ng-show="users.length" class="nav-list">
+                <md-list-item layout="row">
+                    <md-input-container flex="100">
+                        <label>
+                            <ng-md-icon icon="search" class="name" style="fill: #E91E63" size="15"></ng-md-icon>
+                            Search
+                        </label>
+                        <input ng-model="searchText" type="text">
+                    </md-input-container>
+                </md-list-item>
+                <md-divider></md-divider>
+                <md-list-item class="md-2-line" ng-repeat="user in users | filter:searchText">
+                    <md-divider></md-divider>
+                    <img ng-src="{{user.profilePic}}" class="md-avatar"/>
+                    <!--<ng-md-icon class="md-avatar" icon="account_circle" style="fill: #000" size="50"></ng-md-icon>-->
+                    <div class="md-list-item-text" layout="column">
+                        <h3>{{ user.firstName | capitalize}} {{ user.lastName | capitalize}}</h3>
+                        <h4>{{ user.userName }}</h4>
+
+                        <p></p>
+                    </div>
+                </md-list-item>
+                <md-divider></md-divider>
+            </md-list>
+
+
+        </md-content>
+        <button ng-click="showUserFrom()"
+                class="md-button md-icon-button md-raised md-primary md-fab md-fab-bottom-right">
+            <ng-md-icon icon="add" style="fill: #fff"></ng-md-icon>
+        </button>
+    </md-sidenav>
+</div>

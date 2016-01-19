@@ -1,0 +1,29 @@
+<md-toolbar>
+    <div class="md-toolbar-tools">
+        <h2>Create Company</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+            <ng-md-icon icon="highlight_remove" style="fill: #fff"></ng-md-icon>
+        </md-button>
+    </div>
+</md-toolbar>
+<md-content>
+    <div layout="row" layout-padding>
+        <md-input-container>
+            <label>Company Name</label>
+            <input ng-model="company.name" type="text">
+        </md-input-container>
+        <md-input-container>
+            <label>Address</label>
+            <input ng-model="company.address" type="text">
+        </md-input-container>
+    </div>
+    <h1>{{company | json}}</h1>
+
+    <div layout="row" layout-align="end end">
+        <button ng-click="createCompany(company)" class="md-button md-raised md-primary" flex>
+            Add
+        </button>
+    </div>
+
+</md-content>
